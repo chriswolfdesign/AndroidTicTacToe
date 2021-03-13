@@ -10,6 +10,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * BoardTest.java
+ *
+ * Unit testing for Board.java
+ *
+ * @author Chris Wolf
+ * @version 1.0.0 (March 13, 2021)
+ */
 public class BoardTest {
     Board b;
 
@@ -108,5 +116,36 @@ public class BoardTest {
     @Test
     public void testPlacePlayerAtSquareOCorrectlyPlaced() {
         assertTrue(b.placePlayerAtSquare(1, 1, Player.O));
+    }
+
+    // remainingEmptySquares Test
+
+    @Test
+    public void testRemainingEmptySquaresAllSquaresEmpty() {
+        int expected = (int) Math.pow(BoardSettings.BOARD_SIZE, 2);
+        assertEquals(b.remainingEmptySquares(), expected);
+    }
+
+    @Test
+    public void testRemainingEmptySquaresAllButFourCornersRemaining() {
+        int expected = (int) Math.pow(BoardSettings.BOARD_SIZE, 2) - 4;
+
+        assertTrue(b.placePlayerAtSquare(1, 1, Player.X));
+        assertTrue(b.placePlayerAtSquare(BoardSettings.BOARD_SIZE - 1, 1, Player.O));
+        assertTrue(b.placePlayerAtSquare(1, BoardSettings.BOARD_SIZE - 1, Player.X));
+        assertTrue(b.placePlayerAtSquare(BoardSettings.BOARD_SIZE - 1, BoardSettings.BOARD_SIZE - 1, Player.O));
+
+        assertEquals(b.remainingEmptySquares(), expected);
+    }
+
+    @Test
+    public void testRemainingEmptySquaresNoEmptySquaresRemaining() {
+        for (int i = 0; i < BoardSettings.BOARD_SIZE; i++) {
+            for (int j = 0; j < BoardSettings.BOARD_SIZE; j++) {
+                assertTrue(b.placePlayerAtSquare(i, j, Player.X));
+            }
+        }
+
+        assertEquals(b.remainingEmptySquares(), 0);
     }
 }
