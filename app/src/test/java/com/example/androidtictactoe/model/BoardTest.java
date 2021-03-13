@@ -30,7 +30,7 @@ public class BoardTest {
 
     @Test
     public void testGetPlayerAtSquareRowTooLow() {
-        assertNull(b.getPlayerAtSquare(-1, BoardSettings.BOARD_SIZE - 1) );
+        assertNull(b.getPlayerAtSquare(-1, BoardSettings.BOARD_SIZE - 1));
     }
 
     @Test
