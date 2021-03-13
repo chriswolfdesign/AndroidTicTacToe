@@ -15,12 +15,44 @@ import com.example.androidtictactoe.model.settings.BoardSettings;
 public abstract class Game {
     /** The board the game will be played on */
     protected Board board;
+    /** The player who's turn it currently is */
+    private Player currentPlayer;
 
     /**
      * Initializes the game with a "blank" board
      */
     public Game() {
         this.board = new Board();
+        this.currentPlayer = Player.X;
+    }
+
+    /**
+     * Getter for currentPlayer
+     * @return currentPlayer
+     */
+    public Player getCurrentPlayer() {
+        return this.currentPlayer;
+    }
+
+    /**
+     * Switch the current player from X -> O or vice-versa
+     */
+    public void updateCurrentPlayer() {
+        if (currentPlayer == Player.X) {
+            currentPlayer = Player.O;
+        } else {
+            currentPlayer = Player.X;
+        }
+    }
+
+    /**
+     * Makes a move for the current player
+     * @param row the row of the square the current player is trying to make a move on
+     * @param col the column of the square the current player is trying to make a move on
+     * @return false is the move is illegal, otherwise returns true and makes the move
+     */
+    public boolean makeMove(int row, int col) {
+        return this.makeMove(row, col, this.currentPlayer);
     }
 
     /**
@@ -28,7 +60,7 @@ public abstract class Game {
      * @param row the row of the square the player is trying to make a move on
      * @param col the column of the square the player is trying to make a move on
      * @param player the player who is trying to make the move
-     * @return returns false if the move is illegal, otherwise returns true and makes the move
+     * @return false if the move is illegal, otherwise returns true and makes the move
      */
     public abstract boolean makeMove(int row, int col, Player player);
 
