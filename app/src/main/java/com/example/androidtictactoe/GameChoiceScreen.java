@@ -1,5 +1,6 @@
 package com.example.androidtictactoe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,7 @@ public class GameChoiceScreen extends AppCompatActivity {
      * @param view the view that has been clicked
      */
     public void humanVsComputerButtonClicked(View view) {
-        Toast.makeText(this, "You clicked the Human Vs. Computer Button!", Toast.LENGTH_LONG).show();
+        Intent computerChoiceScreen = new Intent(this, ComputerChoiceScreen.class);
+        startActivity(computerChoiceScreen);
     }
 }

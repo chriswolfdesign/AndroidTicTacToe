@@ -12,4 +12,8 @@
     <string name="gameChoiceScreenHeaderText">Which game mode would you like to play?</string>
     <string name="humanVsHumanButtonText">Human Vs. Human</string>
     <string name="humanVsComputerButtonText">Human vs. Computer</string>
+    <string name="title_activity_computer_choice_screen">computer_choice_screen</string>
+    <string name="computerPlayerChoiceHeaderText">Which player should the computer control?</string>
+    <string name="playerXText">Player X</string>
+    <string name="playerOText">Player O</string>
 </resources>
