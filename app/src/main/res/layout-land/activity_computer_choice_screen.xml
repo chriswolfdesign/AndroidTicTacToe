@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ComputerChoiceScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0sp">
+
+            <TextView
+                android:id="@+id/computerPlayerChoiceHeaderText"
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:text="@string/computerPlayerChoiceHeaderText" />
+
+            <Button
+                android:id="@+id/playerXButton"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_below="@id/computerPlayerChoiceHeaderText"
+                android:layout_marginTop="70dp"
+                style="@style/buttonStyle"
+                android:text="@string/playerXText"
+                />
+
+            <Button
+                android:id="@+id/playerOButton"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_below="@id/playerXButton"
+                android:layout_marginTop="20dp"
+                style="@style/buttonStyle"
+                android:text="@string/playerOText"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
