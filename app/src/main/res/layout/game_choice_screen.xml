@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".GameChoiceScreen">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:text="@string/gameChoiceScreenHeaderText" />
+
+    <Button
+        android:id="@+id/humanVsHumanButton"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_below="@id/headerText"
+        android:layout_marginTop="70dp"
+        style="@style/buttonStyle"
+        android:text="@string/humanVsHumanButtonText"
+        />
+
+    <Button
+        android:id="@+id/humanVsComputerButton"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_below="@id/humanVsHumanButton"
+        android:layout_marginTop="20dp"
+        style="@style/buttonStyle"
+        android:text="@string/humanVsComputerButtonText"
+        />
+
+
+</RelativeLayout>
