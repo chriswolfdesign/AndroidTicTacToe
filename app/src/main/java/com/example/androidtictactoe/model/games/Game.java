@@ -46,14 +46,30 @@ public abstract class Game {
     }
 
     /**
+     * Gets the player at a given square on the board
+     * @param row the row we are searching for a player on
+     * @param col the column we are searching for a player on
+     * @return the player who is on the square we are searching on
+     */
+    public Player getPlayerAtSquare(int row, int col) {
+        return this.board.getPlayerAtSquare(row, col);
+    }
+
+    /**
+     * Calculates the number of squares that have not been played on
+     * @return the number of squares that have not been played on
+     */
+    public int remainingEmptySquares() {
+        return this.board.remainingEmptySquares();
+    }
+
+    /**
      * Makes a move for the current player
      * @param row the row of the square the current player is trying to make a move on
      * @param col the column of the square the current player is trying to make a move on
      * @return false is the move is illegal, otherwise returns true and makes the move
      */
-    public boolean makeMove(int row, int col) {
-        return this.makeMove(row, col, this.currentPlayer);
-    }
+    public abstract boolean makeMove(int row, int col);
 
     /**
      * Makes a move for the player onto the board
@@ -62,7 +78,15 @@ public abstract class Game {
      * @param player the player who is trying to make the move
      * @return false if the move is illegal, otherwise returns true and makes the move
      */
-    public abstract boolean makeMove(int row, int col, Player player);
+    public boolean makeMove(int row, int col, Player player) {
+        boolean result =  this.board.placePlayerAtSquare(row, col, player);
+
+        if (result) {
+            this.updateCurrentPlayer();
+        }
+
+        return result;
+    }
 
     /**
      * Determines whether or not the game is over

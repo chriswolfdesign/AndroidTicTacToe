@@ -6,6 +6,7 @@ import com.example.androidtictactoe.model.settings.BoardSettings;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -158,6 +159,24 @@ public class GameTest {
         assertTrue(g.hasPlayerWon(Player.O));
         assertFalse(g.hasPlayerWon(Player.X));
     }
+
+    // updateCurrentPlayer
+
+    @Test
+    public void testUpdatePlayerMoveFromXToO() {
+        assertEquals(g.getCurrentPlayer(), Player.X);
+        g.updateCurrentPlayer();
+        assertEquals(g.getCurrentPlayer(), Player.O);
+    }
+
+    @Test
+    public void testUpdatePlayerMoveFromOToX() {
+        assertEquals(g.getCurrentPlayer(), Player.X);
+        g.updateCurrentPlayer();
+        assertEquals(g.getCurrentPlayer(), Player.O);
+        g.updateCurrentPlayer();
+        assertEquals(g.getCurrentPlayer(), Player.X);
+    }
 }
 
 /**
@@ -169,7 +188,7 @@ class MockGame extends Game {
     }
 
     @Override
-    public boolean makeMove(int row, int col, Player player) {
-        return this.board.placePlayerAtSquare(row, col, player);
+    public boolean makeMove(int row, int col) {
+        return this.board.placePlayerAtSquare(row, col, this.getCurrentPlayer());
     }
 }

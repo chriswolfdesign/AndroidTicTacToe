@@ -15,11 +15,10 @@ public class TwoHumanGame extends Game {
      * Attempts to make the move the player has requested
      * @param row the row of the square the player is trying to make a move on
      * @param col the column of the square the player is trying to make a move on
-     * @param player the player who is trying to make the move
      * @return false if the move is illegal, otherwise it returns true and makes the move
      */
     @Override
-    public boolean makeMove(int row, int col, Player player) {
-        return this.board.placePlayerAtSquare(row, col, player);
+    public boolean makeMove(int row, int col) {
+        return this.makeMove(row, col, this.getCurrentPlayer());
     }
 }
