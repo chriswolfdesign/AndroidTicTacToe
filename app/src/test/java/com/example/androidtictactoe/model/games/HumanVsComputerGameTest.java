@@ -52,4 +52,65 @@ public class HumanVsComputerGameTest {
 
         assertEquals(g.boardValue(), Values.PLAYER_O_WON);
     }
+
+    // clone Tests
+
+    @Test
+    public void testCloneEmptyBoard() {
+        HumanVsComputer g = new HumanVsComputer(Player.X);
+        HumanVsComputer copy = g.clone();
+
+        for (int i = 0; i < BoardSettings.BOARD_SIZE; i++) {
+            for (int j = 0; j < BoardSettings.BOARD_SIZE; j++) {
+                assertEquals(g.getPlayerAtSquare(i, j), copy.getPlayerAtSquare(i, j));
+            }
+        }
+
+        assertEquals(g.getCurrentPlayer(), copy.getCurrentPlayer());
+    }
+
+    @Test
+    public void testCloneCornersHaveBeenPlayed() {
+        HumanVsComputer g = new HumanVsComputer(Player.X);
+
+        assertTrue(g.makeMove(0, 0, Player.X));
+        assertTrue(g.makeMove(BoardSettings.BOARD_SIZE - 1, 0, Player.O));
+        assertTrue(g.makeMove(0, BoardSettings.BOARD_SIZE -1, Player.X));
+        assertTrue(g.makeMove(BoardSettings.BOARD_SIZE - 1, BoardSettings.BOARD_SIZE - 1, Player.O));
+
+        HumanVsComputer copy = g.clone();
+
+        for (int i = 0; i < BoardSettings.BOARD_SIZE; i++) {
+            for (int j = 0; j < BoardSettings.BOARD_SIZE; j++) {
+                assertEquals(g.getPlayerAtSquare(i, j), copy.getPlayerAtSquare(i, j));
+            }
+        }
+
+        assertEquals(g.getCurrentPlayer(), copy.getCurrentPlayer());
+    }
+
+    @Test
+    public void testCloneAllSquaresHaveBeenPlayed() {
+        HumanVsComputer g = new HumanVsComputer(Player.X);
+
+        for (int i = 0; i < BoardSettings.BOARD_SIZE; i++) {
+            for (int j = 0; j < BoardSettings.BOARD_SIZE; j++) {
+                if (Math.random() < 0.5) {
+                    assertTrue(g.makeMove(i, j, Player.X));
+                } else {
+                    assertTrue(g.makeMove(i, j, Player.O));
+                }
+            }
+        }
+
+        HumanVsComputer copy = g.clone();
+
+        for (int i = 0; i < BoardSettings.BOARD_SIZE; i++) {
+            for (int j = 0; j < BoardSettings.BOARD_SIZE; j++) {
+                assertEquals(g.getPlayerAtSquare(i, j), copy.getPlayerAtSquare(i, j));
+            }
+        }
+
+        assertEquals(g.getCurrentPlayer(), copy.getCurrentPlayer());
+    }
 }

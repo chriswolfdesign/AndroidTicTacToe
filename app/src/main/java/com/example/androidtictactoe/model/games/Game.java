@@ -45,6 +45,10 @@ public abstract class Game {
         }
     }
 
+    public Player getPlayerAtSquare(int row, int col) {
+        return this.board.getPlayerAtSquare(row, col);
+    }
+
     /**
      * Makes a move for the current player
      * @param row the row of the square the current player is trying to make a move on
